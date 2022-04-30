@@ -8,9 +8,19 @@ document.addEventListener("DOMContentLoaded", () => {
   function addNewTask(e) {
     e.preventDefault();
 
-    newListItem = document.createElement("li");
-    newListItem.textContent = taskForm.querySelector('#new-task-description').value;
+    const newListItem = document.createElement("li");
+    const newListItemText = taskForm.querySelector('#new-task-description').value;
+    newListItem.textContent = `${newListItemText} `
+    newListItem.appendChild(addDeleteBtn());
+
     taskList.appendChild(newListItem);
     taskForm.reset();
+  }
+
+  function addDeleteBtn() {
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "X";
+    deleteBtn.addEventListener("click", e => e.target.parentElement.remove());
+    return deleteBtn;
   }
 });
