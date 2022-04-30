@@ -19,16 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function addTaskItem(task, priority) {
     const newListItem = document.createElement("li");
     newListItem.textContent = `${task} `;
-    
-    switch(priority) {
-      case "High":
-        newListItem.style.color = "red";
-        break;
-      case "Low":
-        newListItem.style.color = "blue";
-        break;
-    }
-    
+    newListItem.style.color = priorityColor(priority);
     newListItem.appendChild(addEditBtn());
     newListItem.appendChild(addDeleteBtn());
     taskList.appendChild(newListItem);
@@ -52,5 +43,16 @@ document.addEventListener("DOMContentLoaded", () => {
     editBtn.textContent = "Edit";
     editBtn.addEventListener("click", editTask);
     return editBtn;
+  }
+
+  function priorityColor(prioritySelection) {
+    switch(prioritySelection) {
+      case "High":
+        return "red";
+        break;
+      case "Low":
+        return "blue";
+        break;
+    }
   }
 });
