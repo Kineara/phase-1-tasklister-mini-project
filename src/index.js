@@ -9,15 +9,26 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const newListItemText = taskForm.querySelector('#new-task-description').value;
+    const newListItemPriority = taskForm.querySelector('#new-task-priority').value;
 
     if (newListItemText) {
-      addTaskItem(newListItemText);
+      addTaskItem(newListItemText, newListItemPriority);
     }
   }
 
-  function addTaskItem(task) {
+  function addTaskItem(task, priority) {
     const newListItem = document.createElement("li");
     newListItem.textContent = `${task} `;
+    
+    switch(priority) {
+      case "High":
+        newListItem.style.color = "red";
+        break;
+      case "Low":
+        newListItem.style.color = "blue";
+        break;
+    }
+    
     newListItem.appendChild(addEditBtn());
     newListItem.appendChild(addDeleteBtn());
     taskList.appendChild(newListItem);
