@@ -18,9 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function addTaskItem(task) {
     const newListItem = document.createElement("li");
     newListItem.textContent = `${task} `;
+    newListItem.appendChild(addEditBtn());
     newListItem.appendChild(addDeleteBtn());
     taskList.appendChild(newListItem);
     taskForm.reset();
+  }
+
+  function editTask(e) {
+    let updatedItem = prompt("New item: ");
+    e.target.parentElement.firstChild.textContent = updatedItem;
   }
 
   function addDeleteBtn() {
@@ -28,5 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteBtn.textContent = "X";
     deleteBtn.addEventListener("click", e => e.target.parentElement.remove());
     return deleteBtn;
+  }
+
+  function addEditBtn() {
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+    editBtn.addEventListener("click", editTask);
+    return editBtn;
   }
 });
