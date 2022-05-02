@@ -9,13 +9,27 @@
   <div id="main-content">
     <h1>Task Lister Lite™️</h1>
 
+    <div>
+      <form id="sort-tasks-form" action="" method="POST">
+        <label for="taskSort">Sort by:</label>
+        <select id="taskSort" name="taskSort">
+          <option value="descending">Descending Priority</option>
+          <option value="ascending">Ascending Priority</option>
+        </select>
+        <button id="sortButton">Sort</button>
+      </form>
+    </div>
+
     <form id="create-task-form" action="" method="POST">
       <label for="new-task-description">Task description:</label>
       <input type="text" id="new-task-description" name="new-task-description" placeholder="description">
+      <label for=""new-task-date-due">Due Date</label>
+      <input type="date" id="new-task-date-due" name="new-task-date-due">
       <label for="new-task-priority">Task priority:</label>
       <select id="new-task-priority" name="new-task-priority">
-        <option value="High">High</option>
-        <option value="Low">Low</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
       </select>
       <input type="submit" value="Create New Task">
     </form>
@@ -31,3 +45,4 @@
 
 </body>
 </html>
+
